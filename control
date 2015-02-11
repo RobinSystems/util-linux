@@ -1,0 +1,7 @@
+Package: robin-nsenter
+Version: %version
+Section: base
+Priority: optional
+Architecture: all
+Maintainer: <support@robinsystems.com>
+Description: Robin Systems Analytics Software

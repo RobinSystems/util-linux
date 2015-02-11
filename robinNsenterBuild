@@ -1,0 +1,14 @@
+#!/bin/bash -f
+
+#
+# Wrapper script to run the debian package build of the zfsonlinux
+# package
+#
+
+docker_image="stash.robinsystems.com:5000/bld-host:r8"
+#
+# Now switch to the docker image and build
+#
+docker run --rm -v $PWD:$PWD -w $PWD $docker_image $PWD/buildDeb $1 -b
+
+exit $?

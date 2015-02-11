@@ -1,0 +1,18 @@
+#!/bin/bash 
+#
+# Wrapper script to run the debian package build of the zfsonlinux
+# package
+#
+./autogen.sh
+./configure --without-ncurses
+make LDFLAGS=-all-static nsenter
+mkdir -p package/DEBIAN
+sed -e "s/%version/$1/g" control > package/DEBIAN/control
+mkdir -p package/usr/local/bin
+cp -RL  nsenter package/usr/local/bin
+cd package
+md5sum `find . -type f | grep -v '^[.]/DEBIAN/'` >DEBIAN/md5sums
+cd ..
+fakeroot dpkg-deb --build package .
+exit $?
+
