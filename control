@@ -1,4 +1,4 @@
-Package: robin-nsenter
+Package: nsenter
 Version: 2.26-%version
 Section: base
 Priority: optional
